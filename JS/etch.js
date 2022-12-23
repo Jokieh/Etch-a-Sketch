@@ -21,7 +21,7 @@ function renderHeader () {
     const header = document.createElement('div');
 
     header.className = "header";
-    header.textContent = "header";
+    //header.textContent = "header";
     header.style.cssText = headerCSS;
 
     document.body.appendChild(header);
@@ -59,7 +59,7 @@ function renderLeftContent () {
     const leftContent = document.createElement('div');
 
     leftContent.className = "leftContent";
-    leftContent.textContent = "leftContent";
+    //leftContent.textContent = "leftContent";
     leftContent.style.cssText = leftContentCSS;
 
     document.querySelector(".content").appendChild(leftContent);
@@ -101,7 +101,7 @@ function renderRightContent () {
 
     const rightContent = document.createElement('div');
     rightContent.className = "rightContent";
-    rightContent.textContent = "rightContent";
+    //rightContent.textContent = "rightContent";
     rightContent.style.cssText = rightContentCSS;
 
     document.querySelector(".content").appendChild(rightContent);
@@ -119,24 +119,35 @@ function renderRightContent () {
 
     (function renderSizeInput () {
 
+        const sizeDiv = document.createElement("div");
         const sizeInput = document.createElement("input");
         const sizeInputLabel = document.createElement("label");
+        const clearButton = document.createElement("button");
 
+        clearButton.textContent = "CLEAR";
+
+        sizeDiv.className = "sizeDiv";
         sizeInputLabel.htmlFor = "sizeInput";
         sizeInputLabel.className = "sizeInputLabel";
+        sizeInputLabel.textContent = "Size: 50x50";
+
 
         sizeInput.name = "sizeInput";
         sizeInput.type = "range";
         sizeInput.min = "1";
         sizeInput.max = "100";
 
+        clearButton.addEventListener("click", (event) => { document.querySelector(".table").childNodes.forEach(node => node.style.backgroundColor = "white")});
+
         sizeInput.addEventListener("input", (event) => {
 
-            document.querySelector(".sizeInputLabel").textContent = event.target.value;
+            document.querySelector(".sizeInputLabel").textContent = "Size: " + event.target.value + "x" + event.target.value;
             renderCells(event.target.value)});
+
 
         document.querySelector(".rightContent").appendChild(sizeInput);
         document.querySelector(".rightContent").appendChild(sizeInputLabel);
+        document.querySelector(".rightContent").appendChild(clearButton);
 
         sizeInputLabel.textContent = document.querySelector(".sizeInput").nodeValue.toString();
 
@@ -183,7 +194,7 @@ function renderFooter () {
     ;
 
     const footer = document.createElement('div');
-    footer.textContent = "footer";
+    //footer.textContent = "footer";
     footer.className = "footer";
     footer.style.cssText = footerCSS;
 
